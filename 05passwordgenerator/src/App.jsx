@@ -24,18 +24,17 @@ function App() {
     }
 
     setPassword(pass);
-
   }, [length, numberAllowed, charAllowed, setPassword]);
 
- const copyPasswordToClipboard = useCallback(() => {
-  passwordRef.current?.select();
-  passwordRef.current?.setSelectionRange(0,999);
-   window.navigator.clipboard.writeText(password);
- },[password])
+  const copyPasswordToClipboard = useCallback(() => {
+    passwordRef.current?.select();
+    passwordRef.current?.setSelectionRange(0, 999);
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
 
- useEffect(() => {
-   passwordGenerator();
- }, [length, numberAllowed, charAllowed, passwordGenerator]);
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
   return (
     <>
@@ -50,7 +49,10 @@ function App() {
             readOnly
             ref={passwordRef}
           />
-          <button onClick={copyPasswordToClipboard} className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
+          <button
+            onClick={copyPasswordToClipboard}
+            className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0"
+          >
             copy
           </button>
         </div>
@@ -90,7 +92,6 @@ function App() {
               }}
             />
             <label htmlFor="characterInput">Characters</label>
-
           </div>
         </div>
       </div>
